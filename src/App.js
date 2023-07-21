@@ -13,7 +13,8 @@ function App() {
       <button
         onClick={() => {
           setSubscribed(!subscribed);
-          setSubscribedCount(subscribedCount + 1);
+          setSubscribedCount((currentCount) => currentCount + 1);
+          setSubscribedCount((currentCount) => currentCount + 1);
           if (!alerts) setAlerts(true);
         }}
       >
@@ -25,5 +26,7 @@ function App() {
     </section>
   );
 }
+
+//Using a function means that you will avoid potential race conditions. Instead of taking the value of subscribedCount, which is subject to change, the function will ensure that whatever the most recent value is, it will add 1 to it.
 
 export default App;
